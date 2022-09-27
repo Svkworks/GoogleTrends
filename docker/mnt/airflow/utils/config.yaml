@@ -1,0 +1,10 @@
+keywords:
+  - Oracle
+  - MySQL
+  - SQL Server
+  - PostgresSQL
+  - MongoDB
+
+gcp_auth_path: '/utils/google_auth.json'
+bucket_name: 'hd_ggl_trends'
+upload_trends_path: 'upload_trends/'
