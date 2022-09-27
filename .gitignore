@@ -1,0 +1,5 @@
+docker/mnt/.DS_Store
+docker/.DS_Store
+docker/mnt/airflow/.DS_Store
+.DS_Store
+docker/mnt/airflow/utils/google_auth.json
