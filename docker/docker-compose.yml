@@ -258,7 +258,7 @@ services:
     restart: always
     container_name: airflow
     volumes:
-      - ./mnt/airflow/airflow.cfg:/opt/airflow/airflow.cfg
+      #- ./mnt/airflow/airflow.cfg:/opt/airflow/airflow.cfg
       - ./mnt/airflow/dags:/opt/airflow/dags
       - ./mnt/airflow/utils:/opt/airflow/utils
     ports:
