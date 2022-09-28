@@ -4,3 +4,8 @@ docker/mnt/airflow/.DS_Store
 .DS_Store
 docker/mnt/airflow/utils/google_auth.json
 docker/mnt/airflow/dags/__pycache__/
+../.idea/misc.xml
+../.idea/Hospitality_Digital.iml
+.idea/misc.xml
+.idea/Hospitality_Digital.iml
+
