@@ -39,12 +39,15 @@ def google_trends_to_gcs():
 
     storage_client = storage.Client.from_service_account_json(gcp_auth_path)
 
-    # get bucket with name
-    bucket = storage_client.get_bucket(bucket_name)
+    bucket = storage_client.bucket(bucket_name)
 
-    # df = pd.DataFrame(data=[{1, 2, 3}, {4, 5, 6}], columns=['a', 'b', 'c'])
-    bucket.blob(upload_trends_path + f'google_trends_{current_date}.parquet').upload_from_string(
-        filtered_df.to_parquet())
+    if bucket.exists():
+        bucket.blob(upload_trends_path + f'google_trends_{current_date}.parquet').upload_from_string(
+            filtered_df.to_parquet())
+    else:
+        new_bucket = storage_client.create_bucket(bucket, location="asia-south1")
+        new_bucket.blob(upload_trends_path + f'google_trends_{current_date}.parquet').upload_from_string(
+            filtered_df.to_parquet())
 
     print(f'The Google Trends File has been moved to Google cloud bucket {bucket_name}')
 

@@ -34,18 +34,25 @@ filtered_df = df_ot.loc[(df_ot['date'] >= current_date_minus_3_years) & (df_ot['
 # df = pd.DataFrame(data).drop(columns='isPartial')
 print(filtered_df.head(10))
 
-"""
+
 # Google Cloud Connectivity
 # create storage client
 gcp_auth_path = base_path + yaml_dict['gcp_auth_path']  # '/docker/mnt/airflow/utils/google_auth.json'
-bucket_name = yaml_dict['bucket_name']  # 'hd_ggl_trends'
+bucket_name = yaml_dict['bucket_name'] + '_123' # 'hd_ggl_trends'
 upload_trends_path = yaml_dict['upload_trends_path']  # 'upload_trends/'
 
 storage_client = storage.Client.from_service_account_json(gcp_auth_path)
 
 # get bucket with name
-bucket = storage_client.get_bucket(bucket_name)
+bucket = storage_client.bucket(bucket_name)
+
+if bucket.exists():
+    bucket.blob(upload_trends_path + f'google_trends_{current_date}.parquet').upload_from_string(
+        filtered_df.to_parquet())
+else:
+    new_bucket = storage_client.create_bucket(bucket, location="asia-south1")
+    new_bucket.blob(upload_trends_path + f'google_trends_{current_date}.parquet').upload_from_string(
+        filtered_df.to_parquet())
 
 # df = pd.DataFrame(data=[{1, 2, 3}, {4, 5, 6}], columns=['a', 'b', 'c'])
-bucket.blob(upload_trends_path + f'google_trends_{current_date}.parquet').upload_from_string(filtered_df.to_parquet())
-"""
+
