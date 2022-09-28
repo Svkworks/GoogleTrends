@@ -31,3 +31,28 @@ total 24
 -rw-r--r--@ 1 saim  staff  2341 26 Sep 21:06 google_auth.json 
 -rw-r--r--  1 saim  staff   306 28 Sep 19:24 test.py
 ```
+
+### Once you add google_auth.json, Please run the following commands to go to "docker" directory
+
+``` bash
+pwd
+/Users/saim/Documents/HD/GoogleTrends/docker/mnt/airflow/utils
+
+cd ../../../
+
+pwd
+/Users/saim/Documents/HD/GoogleTrends/docker
+```
+
+###  Following command will create airflow docker,  (Note: Your docker folder should be your present working directory (PWD)) 
+
+``` bash
+/bin/bash start.sh 
+```
+> Once you run the above command, it will create a snowflake docker container, to verify the container status please go to "http://localhost:8080" 
+> You can see airflow login page, and please use the following credentials to access the airflow webUI 
+
+```
+username : airflow
+password : airflow
+```
