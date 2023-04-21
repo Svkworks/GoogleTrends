@@ -3,7 +3,7 @@ FROM python:3.8-slim
 LABEL maintainer="MarcLamberti"
 
 # Arguments that can be set with docker build
-ARG AIRFLOW_VERSION=2.0.2
+ARG AIRFLOW_VERSION=2.3.4
 ARG AIRFLOW_HOME=/opt/airflow
 
 # Export the environment variable AIRFLOW_HOME where airflow will be installed
